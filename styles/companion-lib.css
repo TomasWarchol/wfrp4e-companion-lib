@@ -1,0 +1,171 @@
+/**
+ * WFRP4e – Bajery (biblioteka wspólna)
+ * Style Centrum Zarządzania Dodatkami MG oraz przycisku w katalogu Aktorów
+ */
+
+.open-gm-hub-btn {
+  margin: 4px 0 2px 0;
+  padding: 6px;
+  font-weight: bold;
+  background: #2b1f15;
+  color: #ffd700;
+  border: 1px solid #7c5e44;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ──────────────────────────────────────────── */
+/*  CENTRUM ZARZĄDZANIA DODATKAMI MG (GM HUB)   */
+/* ──────────────────────────────────────────── */
+
+.gm-hub-window {
+  min-width: 650px;
+}
+
+.gm-hub-container {
+  padding: 8px;
+  background: #fdfaf3;
+  color: #2b231d;
+  font-family: "Caslon Antique", Palatino, serif;
+}
+
+.gm-hub-header h2 {
+  border: none;
+}
+
+.gm-hub-table th, .gm-hub-table td {
+  border-right: 1px solid #e0d6c9;
+}
+
+.gm-hub-table th:last-child, .gm-hub-table td:last-child {
+  border-right: none;
+}
+
+.gm-hub-row:hover {
+  background: rgba(90, 61, 40, 0.08) !important;
+}
+
+/* Przełącznik Toggle Switch (Suwak) */
+.switch-toggle {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 18px;
+  margin: 0;
+}
+
+.switch-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0 !important;
+}
+
+.slider-round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #c5b8a8;
+  transition: 0.2s;
+  border-radius: 18px;
+  border: 1px solid #8e735b;
+}
+
+.slider-round:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.switch-toggle input:checked + .slider-round {
+  background-color: #2e7d32;
+  border-color: #1b5e20;
+}
+
+.switch-toggle input:checked + .slider-round:before {
+  transform: translateX(18px);
+}
+
+.switch-toggle input:disabled + .slider-round {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background-color: #d0c8be;
+}
+
+.gm-hub-window .btn-actor-action {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #8e735b;
+  background: rgba(240, 230, 215, 0.9);
+  cursor: pointer;
+  color: #332211;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gm-hub-window .btn-actor-action:hover {
+  background: #e2d3be;
+  border-color: #5a3d28;
+}
+
+.gm-hub-window .btn-actor-action.btn-unlink {
+  color: #888;
+  padding: 2px 5px;
+}
+
+.gm-hub-window .btn-actor-action.btn-unlink:hover {
+  color: #c62828;
+  border-color: #c62828;
+  background: #ffebee;
+}
+
+.gm-hub-window .badge-mission {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.gm-hub-window .badge-mission.ready {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.gm-hub-window .badge-mission.scout {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #90caf9;
+}
+
+.gm-hub-window .badge-mission.dead {
+  background: #212121;
+  color: #eeeeee;
+  border: 1px solid #757575;
+}
+
+.open-gm-hub-btn:hover {
+  background: #4a3424 !important;
+  color: #fff !important;
+}

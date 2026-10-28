@@ -1,0 +1,147 @@
+<div class="wfrp4e gm-hub-container flexcol">
+  <!-- Nagłówek Panelu MG -->
+  <div class="gm-hub-header">
+    <div class="header-main flexrow" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #5a3d28; padding-bottom: 8px; margin-bottom: 10px;">
+      <div>
+        <h2 style="margin: 0; color: #4a2810; font-family: Caslon Antique, Palatino, serif;">
+          <i class="fas fa-sliders-h"></i> {{localize "WFRP4E_COMPANION.Hub.Title"}}
+        </h2>
+        <div style="font-size: 0.82rem; color: #665544;">
+          {{localize "WFRP4E_COMPANION.Hub.Subtitle"}}
+        </div>
+      </div>
+      <div class="gm-hub-stats" style="display: flex; gap: 8px;">
+        <span class="badge-mission ready" title="{{localize "WFRP4E_COMPANION.Hub.ModulesActiveTooltip"}}">
+          <i class="fas fa-cubes"></i> {{localize "WFRP4E_COMPANION.Hub.ModulesActive" active=installedCount total=features.length}}
+        </span>
+        <span class="badge-mission scout" title="{{localize "WFRP4E_COMPANION.Hub.ManagedTooltip"}}">
+          <i class="fas fa-users"></i> {{localize "WFRP4E_COMPANION.Hub.Managed" count=totalCharacters}}
+        </span>
+      </div>
+    </div>
+
+    <!-- Pasek modułów i szybkich akcji masowych -->
+    <div class="gm-modules-cards-bar" style="display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
+      {{#each features}}
+      <div class="gm-module-mini-card" style="flex: 1 1 220px; background: rgba(255,255,255,0.6); border: 1px solid #9e856f; border-radius: 4px; padding: 6px 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+          <strong style="color: #2b231d; font-size: 0.88rem;">
+            <i class="{{this.icon}}"></i> {{this.name}}
+          </strong>
+          {{#if this.isInstalled}}
+            <span class="badge-mission ready" style="font-size: 0.68rem;">{{localize "WFRP4E_COMPANION.Hub.Active"}}</span>
+          {{else}}
+            <span class="badge-mission dead" style="font-size: 0.68rem;" title="{{localize "WFRP4E_COMPANION.Hub.DisabledTooltip"}}">{{localize "WFRP4E_COMPANION.Hub.Disabled"}}</span>
+          {{/if}}
+        </div>
+        <p style="font-size: 0.73rem; color: #665544; margin: 0 0 6px 0; line-height: 1.2;">
+          {{this.description}}
+        </p>
+        <div style="display: flex; gap: 6px; font-size: 0.72rem;">
+          <a class="btn-actor-action" data-action="enable-all-feature" data-feature-id="{{this.id}}" title="{{localize "WFRP4E_COMPANION.Hub.EnableAllTooltip"}}">
+            <i class="fas fa-check-double"></i> {{localize "WFRP4E_COMPANION.Hub.EnableAll"}}
+          </a>
+          <a class="btn-actor-action btn-unlink" data-action="disable-all-feature" data-feature-id="{{this.id}}" title="{{localize "WFRP4E_COMPANION.Hub.HideAllTooltip"}}">
+            <i class="fas fa-eye-slash"></i> {{localize "WFRP4E_COMPANION.Hub.HideAll"}}
+          </a>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+    <!-- Strefa dodawania zarządzanych postaci -->
+    <div class="gm-hub-dropzone" style="display:flex; align-items:center; gap:8px; min-height:38px; margin-bottom:8px; padding:6px 10px; border:1px dashed #8e735b; border-radius:4px; background:rgba(255,255,255,0.45); color:#665544;">
+      <i class="fas fa-hand-pointer"></i>
+      <span>{{localize "WFRP4E_COMPANION.Hub.DropZone"}}</span>
+    </div>
+
+    <!-- Wyszukiwarka postaci -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <div style="position: relative; flex: 1; max-width: 320px;">
+        <input type="text" id="gm-hub-search" placeholder="{{localize "WFRP4E_COMPANION.Hub.Search"}}" style="width: 100%; padding: 4px 8px 4px 26px; font-size: 0.85rem;" />
+        <i class="fas fa-search" style="position: absolute; left: 8px; top: 8px; color: #8e735b; font-size: 0.8rem;"></i>
+      </div>
+      <div style="font-size: 0.75rem; color: #6d5440; font-style: italic;">
+        <i class="fas fa-info-circle"></i> {{localize "WFRP4E_COMPANION.Hub.SavedInstantly"}}
+      </div>
+    </div>
+  </div>
+
+  <!-- Główna Matryca Uprawnień (Tabela) -->
+  <div class="gm-hub-matrix-wrapper" style="flex: 1; overflow-y: auto; max-height: 420px; border: 1px solid #8e735b; border-radius: 4px; background: rgba(255,255,255,0.4);">
+    <table class="gm-hub-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+      <thead>
+        <tr style="background: rgba(90, 61, 40, 0.15); border-bottom: 2px solid #7c5e44; text-align: left;">
+          <th style="padding: 6px 10px; width: 260px;">{{localize "WFRP4E_COMPANION.Hub.CharacterAndPlayer"}}</th>
+          {{#each features}}
+          <th style="padding: 6px 8px; text-align: center;">
+            <i class="{{this.icon}}"></i> {{this.name}}
+          </th>
+          {{/each}}
+        </tr>
+      </thead>
+      <tbody>
+        {{#each characters}}
+        <tr class="gm-hub-row" data-actor-name="{{this.name}}" data-actor-owner="{{this.owners}}" style="border-bottom: 1px solid #dcd1c4; transition: background 0.15s;">
+          <!-- Kolumna Postaci -->
+          <td style="padding: 6px 10px; display: flex; align-items: center; gap: 8px;">
+            <img src="{{this.img}}" style="width: 32px; height: 32px; object-fit: cover; border-radius: 3px; border: 1px solid #7c5e44; flex-shrink: 0;" />
+            <div>
+              <strong style="color: #2b231d; font-size: 0.9rem; display: block;">{{this.name}}</strong>
+              <small style="color: #665544; font-size: 0.75rem;">
+                <i class="fas fa-user"></i> {{this.owners}}
+              </small>
+            </div>
+          </td>
+
+          <!-- Kolumny Bajerów / Modułów -->
+          {{#each this.features}}
+          <td style="padding: 6px 8px; text-align: center; vertical-align: middle;">
+            <div style="display: inline-flex; align-items: center; gap: 6px;">
+              <label class="switch-toggle" title="{{#if this.isUnlocked}}{{localize "WFRP4E_COMPANION.Hub.UnlockedTooltip"}}{{else}}{{localize "WFRP4E_COMPANION.Hub.HiddenTooltip"}}{{/if}}">
+                <input type="checkbox" 
+                       class="feature-toggle-checkbox" 
+                       data-actor-id="{{../id}}" 
+                       data-feature-id="{{this.id}}" 
+                       {{#if this.isUnlocked}}checked{{/if}} 
+                       {{#unless this.isInstalled}}disabled{{/unless}} />
+                <span class="slider-round"></span>
+              </label>
+
+              {{#if this.isInstalled}}
+                <button type="button" 
+                        class="btn-actor-action" 
+                        data-action="open-feature" 
+                        data-actor-id="{{../id}}" 
+                        data-feature-id="{{this.id}}" 
+                        title="{{localize "WFRP4E_COMPANION.Hub.OpenTooltip"}}" 
+                        style="padding: 2px 5px; font-size: 0.72rem;">
+                  <i class="fas fa-external-link-alt"></i>
+                </button>
+              {{/if}}
+            </div>
+          </td>
+          {{/each}}
+        </tr>
+        {{/each}}
+        {{#unless totalCharacters}}
+        <tr>
+          <td colspan="4" style="padding:22px; text-align:center; color:#775533;">
+            {{localize "WFRP4E_COMPANION.Hub.Empty"}}
+          </td>
+        </tr>
+        {{/unless}}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Stopka Informacyjna -->
+  <div class="gm-hub-footer" style="border-top: 1px dashed #8e735b; padding-top: 6px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.76rem; color: #775533;">
+    <div>
+      <i class="fas fa-shield-alt"></i> <strong>{{localize "WFRP4E_COMPANION.Hub.Discretion"}}</strong> {{localize "WFRP4E_COMPANION.Hub.DiscretionText"}}
+    </div>
+    <div>
+      {{localize "WFRP4E_COMPANION.Hub.Footer"}}
+    </div>
+  </div>
+</div>

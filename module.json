@@ -1,0 +1,64 @@
+{
+  "id": "wfrp4e-companion-lib",
+  "title": "WFRP4e – Companion Library",
+  "description": "Shared library for the Old World Alchemy, Underworld Crew and Iron Mandate: Champion modules: the GM's Companion Hub, character sheet buttons, token tools, dialogs, calendar helpers and safe GM queries. Adds no game mechanics on its own. English and Polish.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Tomek (TomasWarchol)",
+      "url": "https://github.com/TomasWarchol",
+      "discord": "tomek"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "wfrp4e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "9.0.0"
+        }
+      }
+    ]
+  },
+  "library": true,
+  "esmodules": [
+    "scripts/companion-lib.mjs"
+  ],
+  "styles": [
+    "styles/companion-lib.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "lang/pl.json"
+    }
+  ],
+  "flags": {
+    "hotReload": {
+      "extensions": [
+        "css",
+        "hbs",
+        "json"
+      ]
+    }
+  },
+  "url": "https://github.com/TomasWarchol/wfrp4e-companion-lib",
+  "manifest": "https://github.com/TomasWarchol/wfrp4e-companion-lib/releases/latest/download/module.json",
+  "download": "https://github.com/TomasWarchol/wfrp4e-companion-lib/releases/latest/download/module.zip",
+  "bugs": "https://github.com/TomasWarchol/wfrp4e-companion-lib/issues",
+  "readme": "https://github.com/TomasWarchol/wfrp4e-companion-lib/blob/main/README.md",
+  "changelog": "https://github.com/TomasWarchol/wfrp4e-companion-lib/blob/main/CHANGELOG.md",
+  "license": "https://github.com/TomasWarchol/wfrp4e-companion-lib/blob/main/LICENSE"
+}
