@@ -2,7 +2,7 @@
   "id": "wfrp4e-companion-lib",
   "title": "WFRP4e – Companion Library",
   "description": "Shared library for the Old World Alchemy, Underworld Crew and Iron Mandate: Champion modules: the GM's Companion Hub, character sheet buttons, token tools, dialogs, calendar helpers and safe GM queries. Adds no game mechanics on its own. English and Polish.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": {
     "minimum": "13",
     "verified": "14",

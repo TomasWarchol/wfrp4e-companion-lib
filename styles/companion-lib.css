@@ -32,7 +32,8 @@
   padding: 8px;
   background: #fdfaf3;
   color: #2b231d;
-  font-family: "Caslon Antique", Palatino, serif;
+  /* Caslon Antique nie ma polskich liter: w polskiej wersji Almendra z Grimoires/Underworld, gdy są włączone */
+  font-family: var(--cl-font-title, "Caslon Antique"), Palatino, serif;
 }
 
 .gm-hub-header h2 {
@@ -169,3 +170,5 @@
   background: #4a3424 !important;
   color: #fff !important;
 }
+
+:root:lang(pl) { --cl-font-title: "WFRP Almendra", "Caslon Antique"; }
